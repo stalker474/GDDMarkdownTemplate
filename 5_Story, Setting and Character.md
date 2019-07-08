@@ -1,7 +1,6 @@
 # Story, Setting and Character
 
 ## Story and Narrative
-> Specific details like scripts and cut scenes may not be in this document but be in the Story Bible.
 
 ### Back Story
 
@@ -9,27 +8,15 @@
 
 ### Game Progression
 
-### License Considerations
-
-### Cut Scenes
-
-#### Cut Scene #1
-
-##### Actors
-
-##### Descriptions
-
-##### Storyboard
-
-##### Script
-
 ## Game World
 
 ### General look and feel of world
 
-### Area #1
+### Area #1 : Sokolov
 
 #### General Description
+
+This zone is caracterized by the perpetual explosion of the Phoenix III engine of the battle cruiser Sokolov. It periodically emits heavy radions making it impossible to navigate or survive outside a ship and serves as the night cycle.
 
 #### Physical Characteristics
 
@@ -39,7 +26,7 @@
 
 ## Characters
 
-### Character #1
+### Character #1 : Tank 1
 
 #### Back Story
 
@@ -49,12 +36,88 @@
 
 ##### Physical Characteristics
 
-##### Animations
+#### Special Abilities
+
+### Character #1 : Tank 2
+
+#### Back Story
+
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
 
 #### Special Abilities
 
-#### Relevance to Game Story
+### Character #1 : Healer 1
 
-#### Relationship to Other Characters
+#### Back Story
 
-#### Statistics
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
+
+#### Special Abilities
+
+### Character #1 : Healer 2
+
+#### Back Story
+
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
+
+#### Special Abilities
+
+### Character #1 : DPS 1
+
+#### Back Story
+
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
+
+#### Special Abilities
+
+### Character #1 : DPS 2
+
+#### Back Story
+
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
+
+#### Special Abilities
+
+### Character #1 : Skiller 1
+
+#### Back Story
+
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
+
+#### Special Abilities
+
+### Character #1 : Skiller 2
+
+#### Back Story
+
+#### Personality
+
+#### Look
+
+##### Physical Characteristics
+
+#### Special Abilities
