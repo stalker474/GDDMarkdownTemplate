@@ -24,7 +24,7 @@ Are there any other survivers? Are they friendly? And is it true indeed that in 
 
 ## Genre
 
-Top to down survival horror
+Top to down survival horror.
 
 ## Target Audience
 
@@ -34,7 +34,20 @@ Multi-platform support will also maximise accessibility, such as most of the gam
 The idea is to create a game system allowing for an eternal LAN party feel.
 
 ## Game Flow
-> How does the player move through the game. Both through framing interface and the game itself.
+A player must create a new Party with at least one member (himself) and invite others. At any point it's possible to invite new players. Each player must then select a unit class and attribute the first skill points.
+There is a day/night kind of cycle (created by an exploding reactor in the middle of the battleground which emits too much radiation for the navigation to work half of the time).
+The game starts on day 1 with all party members on board of the cargo ship (The Nephilim).
+The day is divided in 2 parts. The first part is skilling and survival, the second part is defense and exploration.
+During the first part of the day, the reactor explosion emits bursts of radiation making it impossible to go outside or navigate. This is where the group must plan, craft, reinforce defenses and repair the ship in order to get ready for the next phase.
+Once the navigation is back online the party can move the ship. During this phase crafting and other on-board activities are still accessible, but all or some members of the party can exit the ship in order to look for resources.
+During this phase the cargo ship can also get boarded by adversaries and must be ready for defense.
+At the end of the second phase everybody must return inside the ship with the collected resources and the cycle starts again.
+
+Players can die in combat or in a trap, but also by dehydration, asphyxiation or cold.
+Main survival resources (**MSR**) are therefore Oxygen, Water and Electrical energy.
+
+The exploration/gathering phase consists on boarding another ship and navigate inside a procedurally generated dungeon representing its entrails. Each ship contains a certain amount of MSR + unique spawnable items. In order to collect MSR the party must find specific rooms. Once a room unlocking a resource has been found, it's possible for one or several players to begin collecting it by spending "exploration hours".
+The ship can contain enemies, traps and locked doors.
 
 ## Look and Feel
 > What is the basic look and feel of the game?  What is the visual style?
