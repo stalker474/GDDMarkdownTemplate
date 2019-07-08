@@ -4,65 +4,54 @@
 
 ### Game Progression
 
-### Mission/Challenge Structure
-
-### Puzzle Structure
+Game progression is measured by the ability to travel further from the central "Sun" and the number of survived days. The battleground is divided by an infinite amount of "Levels" which are defined by the radius. Each new level is therefore a bigger ring, farther from the center.
+As resources fade players are bound to travel to higher levels containing more challenging wreckages.
+A typical progress tracker would display "Day 120, Sector 8" indicating that on day 120, the party has been as far as the 8th ring/level.
 
 ### Objectives
-> What are the objectives of the game?
 
-### Play Flow
-> How does the game flow for the game player?
+The main mission is simply to escape the battleground. In order to do that, the party must acquire the light travel technology by upgrading the Cargo ship.
+Side missions include clues found on shipwrecks revealing the map or other ships.
 
 ## Mechanics
-> What are the rules to the game, both implicit and explicit.  This is the model of the universe that the game works under.  Think of it as a simulation of a world, how do all the pieces interact?  This actually can be a very large section.
-
-### Physics
-> How does the physical universe work?
 
 ### Movement
 
-#### General Movement
-
-#### Other Movement
+Movement is point and click style.
+Abilities can include teleporting.
 
 ### Objects
 
-#### Picking up Objects
-
-#### Moving Objects
+Objects are either hardcoded or randomly generated.
+Wearables such as armors and weapons are craftable. 
+Weapons are made out of a base + mods. Allowing for the same weapon type to have different abilities.
 
 ### Actions
 
-#### Switches and Buttons
+Ship sections are opened by activating door controls.
+Abilities are activated using keyboard keys + clicking.
 
-#### Picking Up, Carrying and Dropping
+### Crafting
+
+A crafting station allows to break an item into basic components or assemble one from them.
+Crafting consumes energy and has random elements, so players have the possibility to consume any abountant resource to obtain a better version of the craft.
 
 #### Talking
 
-#### Reading
+Talking to online players can be done through voice or chat or quick voice commands.
+Talking to offline players can be done by right clicking their avatar and selecting "message", or by referring to them in chat.
+Offline players will receive the message on their companion app.
 
 ### Combat
-> If there is combat or even conflict, how is this specifically modeled?
 
-### Economy
-> What is the economy of the game? How does it work?
+Combat is a real time group engagement.
+It can be either offensive during exploration, or defensive if the Cargo is under attack.
 
-## Screen Flow
+#### Defense
 
-### Screen Flow Chart
-> A graphical description of how each screen is related to every other
+During Phase 2, bandits and scavengers can attack the Cargo to steal resources. Players must try and defend the ship.
+For that, some players can stay at the ship during the phase. Players also have the ability to set up traps and automatic defense systems.
 
-### Screen Descriptions
-> What is the purpose of each screen?
+#### Offense
 
-#### Main Menu Screen
-
-#### Options Screen
-
-## Game Options
-> What are the options and how do they affect game play and mechanics?
-
-## Replaying and Saving
-
-## Cheats and Easter Eggs
+During ship exploration, the team may encounter survivors. Most of them can be hostile.
