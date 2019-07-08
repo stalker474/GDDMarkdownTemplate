@@ -46,6 +46,7 @@ Offline players will receive the message on their companion app.
 
 Combat is a real time group engagement.
 It can be either offensive during exploration, or defensive if the Cargo is under attack.
+Player characters have defensive and offensive capabilities based on their class, stats, and equipment. Some are passive, some are active. The combat mechanism should really look like any point and click combat such as LoL.
 
 #### Defense
 
