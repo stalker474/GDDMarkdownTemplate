@@ -11,6 +11,11 @@ Oxygen, water and energy gets scarce as you try to survive and repair your ship 
 You'll need to board treaturous shipwrecks to collect resources and materials. 
 Are there any other survivers? Are they friendly? And is it true indeed that in space nobody will hear you scream?
 
+Main focus is on Async gaming. Players can play as a group even if not everybody is online at the same time. It's possible to play asynchroniously. A companion app on the phone ensures maximum communication capabilities with offline players and even allow access to a part of the game.
+Avatars of offline players serve as Companions to players currently in game.
+Players can send messages to offline players through their avatars.
+Part of the game can be played completely async in the manner of a versionning system where eventual conflicting actions can be resolved during day-merging phase.
+
 ## Feature Set
 
 - Top-Down view
@@ -34,6 +39,7 @@ Multi-platform support will also maximise accessibility, such as most of the gam
 The idea is to create a game system allowing for an eternal LAN party feel.
 
 ## Game Flow
+
 A player must create a new Party with at least one member (himself) and invite others. At any point it's possible to invite new players. Each player must then select a unit class and attribute the first skill points.
 There is a day/night kind of cycle (created by an exploding reactor in the middle of the battleground which emits too much radiation for the navigation to work half of the time).
 The game starts on day 1 with all party members on board of the cargo ship (The Nephilim).
@@ -50,15 +56,19 @@ The exploration/gathering phase consists on boarding another ship and navigate i
 The ship can contain enemies, traps and locked doors.
 
 ## Look and Feel
-> What is the basic look and feel of the game?  What is the visual style?
+
+Probably cartoonish 3d.
+
+A bit like Epic Quest for Mighty Loot but set in space and more opressive.
+
+https://external-preview.redd.it/eiKv5b4C9IIJ2goUBwYpswXs-8iijy3Lms1eO4c26s8.jpg?width=960&crop=smart&auto=webp&s=41c7f042cbbd823afac506a5a40f313d52387233
+
+https://www.gamereactor.eu/media/44/mightyquestepic_1384414.png
 
 ## Project Scope
-> A summary of the scope of the game.
 
-### Number of Locations
-
-### Number of Levels
-
-### Number of NPC's
-
-### Number of Weapons
+The map consists of a potentially infinite amount of shipwrecks with procedurally generated interiors.
+Some locations are hardcored such as the "Sun" which is an exploding Phoenix III engine from the Imperial Cruiser "Sokolov" or "The swamps". Main focus is on collaborative experience.
+Players can install a mobile app to receive notifications from in game and at least partly play the game.
+Main focus in on async gameplay : Players from the group doesn't have to be online at the same time. The avatars when not controlled by the real player are equiped with AI in order to assist the currently active players as companions.
+Crafting allows the creation of unique items.
