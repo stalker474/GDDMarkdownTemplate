@@ -26,6 +26,26 @@ Objects are either hardcoded or randomly generated.
 Wearables such as armors and weapons are craftable. 
 Weapons are made out of a base + mods. Allowing for the same weapon type to have different abilities.
 
+#### Infusion / Object Augmentation - Skills / Effects
+
+Objects (mostly wearables) have "slots" that can be filled by "infusion objects".
+Slots can be filled by special objects that add active/passive effects, skills or can be combined with other infusable effects.
+The slot - infusion object binding can be permanent or non-permanent.
+
+Non-Permanent bindings can be removed and re-structured.
+Permanent bindings have the chance of generating much stronger results - but it has a random element.
+
+Infusables can have boni aswell as mali.
+Example: Magic Infusable increases your magic, magic-atk and magic-def. But lowers your health and standard-defense.
+
+Infusables can gain XP when used and level up to create stronger combinations aswell as adding a grinding element.
+
+#### Infusables
+
+- Magic (increases magic, lowers health)
+- Elemntal Effect (Fire, Ice,..) - Adds elem. effect on weapon. Adds absorb / protection on armor.
+- Status Effect (Poison, Confusion,..)
+
 ### Actions
 
 Ship sections are opened by activating door controls.
