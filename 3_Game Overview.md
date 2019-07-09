@@ -6,12 +6,12 @@ The Party - A collaborative survival game with procedural dungeon exploring elem
 
 You and your friends control what's left of a cargo ship, lost in space after an intergalactic battle climax. 
 Your damaged engines are only capable of sublight and the nearest civilized planet won't be reachable anytime soon.
-Around you, only wreckage of what once been the elite fleets beloning to the most advanced civilizations of the space quandrant.
-Oxygen, water and energy gets scarce as you try to survive and repair your ship in order to go home.
+Around you, only wreckage of what once been the elite fleets belonging to the most advanced civilizations of the space quandrant.
+Oxygen, water and energy gets scarce as you try to survive and repair your ship in order to get home.
 You'll need to board treaturous shipwrecks to collect resources and materials. 
-Are there any other survivers? Are they friendly? And is it true indeed that in space nobody will hear you scream?
+Are there any other survivors? Are they friendly? And is it true indeed that in space nobody hears you scream?
 
-Main focus is on Async gaming. Players can play as a group even if not everybody is online at the same time. It's possible to play asynchroniously. A companion app on the phone ensures maximum communication capabilities with offline players and even allow access to a part of the game.
+Players can play as a group even if not everybody is online at the same time. It's possible to play asynchroniously. A companion app on the phone ensures maximum communication capabilities with offline players and even allow access to a part of the game.
 Avatars of offline players serve as Companions to players currently in game.
 Players can send messages to offline players through their avatars.
 Part of the game can be played completely async in the manner of a versionning system where eventual conflicting actions can be resolved during day-merging phase.
