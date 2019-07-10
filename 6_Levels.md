@@ -50,3 +50,28 @@ Players can build aditional rooms of different sizes and orientation.
 - Crafting bench
 - Med table
 - Ship upgrade bench
+
+## Battlegrounds
+
+### Synopsis
+
+This is where the battle took place not so long ago.
+Only accessible during "Night".
+Night is represented when the reactor doesn't emit lethal radiation.
+Moving from one ring to another requires to move the Cargo engines.
+Once inside a ring, you can only explore the contents of this specific ring.
+Rings are full of explorable huge spacewrecks which require a map load.
+
+### Objectives
+
+Travel to the most promising shipwrecks in order to board them and collect resources for your survival + tech.
+
+### Physical Description
+
+The map consists of an infinite amount of Rings of debris centered on the artificial sun created by the eternal explosion of a main battleship reactor.
+
+### Encounters
+
+- Scavengers
+- Allies
+- Enemies
