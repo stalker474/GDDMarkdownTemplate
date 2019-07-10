@@ -73,5 +73,35 @@ The map consists of an infinite amount of Rings of debris centered on the artifi
 ### Encounters
 
 - Scavengers
-- Allies
-- Enemies
+- NPC with missions
+
+## Shipwreck
+
+### Synopsis
+
+A shipwreck is basically a procedurally generated dungeon.
+You can spend the whole night here but your party must leave before day.
+
+### Objectives
+
+- Find the cargo hold
+- Obtain XP by eliminating enemies
+- Unlock doors for special content
+
+### Physical Description
+
+Contains rooms with or without locked doors. Room styling depends on the ships race.
+
+### Critical Path
+
+Get access to the cargo hold in order to get resources. All the rest can be behind locked doors even if the party can't open them yet.
+
+### Encounters
+
+- Enemy units
+- Traps
+
+### Level Walkthrough
+
+Try to find the cargo hold as quickly as possible. You can then allocate the remaining hours before day in order to collect the resources you want.
+Try to unlock as many doors as possible to grab unique tech and find unique enemies with higher rewards.
