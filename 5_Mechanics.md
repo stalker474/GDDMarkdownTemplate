@@ -36,34 +36,6 @@ Abilities can include teleporting.
 | ----- | --------------------------------------------- |
 | #1    | Movement speed +(15-20)%                      |
 
-### Active Abilities
-
-#### Offensive
-
-| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
-| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
-| Teleport   | Teleport                                  | 10s      | 5m     | 0    | 0s       | Self   |
-| Dash       | Dash                                      | 5s       | 5m     | 0    | 1s       | Self   |
-
-#### Defensive
-
-| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
-| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
-| Heal       | Instantly heal 100hp                      | 10s      | 10m    | 0    | 0s       | Single |
-| Patch      | Heal 250hp over time                      | 10s      | 10m    | 0    | 30s      | Single |
-| Fortify    | +40% to all resistances                   | 20s      | 10m    | 0    | 5s       | Single |
-| Resolute   | +40% to damage                            | 20s      | 10m    | 0    | 5s       | Single |
-
-### Passive Abilities
-
-| Name              | Effect                                                 |
-| ----------------- | ------------------------------------------------------ |
-| #1                | +50% radius to area                                    |
-| #2                | Turn healing to damage and the over way around         |
-| #3                | Reduce cooldown by 20%                                 |
-| #4                | Divide ability stats by 2 and grant area 3m            |
-| #5                | Apply slow 20% on damage                               |
-
 ### Base mods
 
 Items have base teks, but additional teks can be installed.
@@ -98,6 +70,32 @@ Tek can add boni aswell as mali.
 Example: Heal Tek increases your HP, and adds passive regenration effect to armor. But lowers your attack dmg.
 
 Tek Objects can gain XP when used and level up to create stronger combinations aswell as adding a grinding element.        |
+
+#### Offensive Tek
+
+| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
+| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
+| Teleport   | Teleport                                  | 10s      | 5m     | 0    | 0s       | Self   |
+| Dash       | Dash                                      | 5s       | 5m     | 0    | 1s       | Self   |
+
+#### Defensive Tek
+
+| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
+| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
+| Heal       | Instantly heal 100hp                      | 10s      | 10m    | 0    | 0s       | Single |
+| Patch      | Heal 250hp over time                      | 10s      | 10m    | 0    | 30s      | Single |
+| Fortify    | +40% to all resistances                   | 20s      | 10m    | 0    | 5s       | Single |
+| Resolute   | +40% to damage                            | 20s      | 10m    | 0    | 5s       | Single |
+
+#### Support tek
+
+| Name              | Effect                                                 |
+| ----------------- | ------------------------------------------------------ |
+| #1                | +50% radius to area                                    |
+| #2                | Turn healing to damage and the over way around         |
+| #3                | Reduce cooldown by 20%                                 |
+| #4                | Divide ability stats by 2 and grant area 3m            |
+| #5                | Apply slow 20% on damage                               |
 
 ## Actions
 
