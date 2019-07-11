@@ -44,12 +44,30 @@ Items have base teks, but additional teks can be installed.
 
 #### Armors
 
-| Name              | Base mod 1           | Base mod 2           |
-| ----------------- | -------------------- | -------------------- |
-| RandomName        | #1                   | #2                   |
-
+| Name              | Base mod 1           | Base mod 2           | HP         |
+| ----------------- | -------------------- | -------------------- | ---------- |
+| Basic             | #1                   | #6                   | 400        |
+| Basic2            | #1                   | #6                   | 650        |
+| Basic3            | #1                   | #7                   | 650        |
+| Medium            | #6                   | #7                   | 650        |
 
 #### Weapons
+
+#### Randomizers
+
+Randomizers can be activated on the workbench and apply mods on an item.
+
+1. Alien battery
+A weird energy source, adds one random mod on the item without the need for a mod slot, rerolls all mod stats. Modding is locked forever.
+
+2. Desinfector
+Removes all but base mods from the item
+
+3. Flash
+Rerolls all mods stats
+
+4. Supercharge
+Adds a random mod on the item, requires one mod slot.
 
 ## Objects
 
@@ -109,20 +127,14 @@ Abilities are activated using keyboard keys + clicking.
 
 ## Crafting
 
-A **Workbench** allows to break an item into basic components or assemble one from them.
+A **Workbench** allows to apply mods on an item.
 Crafting consumes energy and has random elements, so players have the possibility to consume any aboundant resource to obtain a better version of the craft.
-
-### Recipes
-
-An item is crafted from base resources
+An item has up to 2 base mods + N crafted mods (depends on crafter levels)
 
 ### Base resources
 
-### Mods
-
-1. Alien battery
-A weird energy source
-2. ploup
+- Randomizers
+- Energy
 
 ## Talking
 
