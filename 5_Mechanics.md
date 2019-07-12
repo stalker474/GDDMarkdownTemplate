@@ -1,5 +1,16 @@
 # Mechanics
 
+## Character Attributes
+
+
+| Name              | Description       |
+| ----------------- | ----------------- |
+| Health            | Life Points       |
+| Damage            |                   |
+| Speed             |                   |
+| Initiative        |                   |
+
+
 ## Movement
 
 Movement is point and click style.
