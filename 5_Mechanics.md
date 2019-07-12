@@ -1,81 +1,106 @@
 # Mechanics
+## Character
 
-## Movement
+Properties:
 
-Movement is point and click style.
-Abilities can include teleporting.
+| Name              | Description                                        |
+| ----------------- | -------------------------------------------------- |
+| HP                | Life Points                                        |
+| DMG               | Melee Damage                                       |
+| ACC               | Ranged Damage                                      |
+| SPD               | Movement & Attack                                  |
+| INI               | Queue Position (async)                             |
+| DEF               | Physical Defense (Ballistic & Melee                |
+| LUCK              |                                                    |
+| DEF HEAT          | Heat Defense                                       |
+| DEF COLD          | Cold Defense                                       |
+| DEF ACID          |                                                    |
+| DEF ELEC          |                                                    | 
+| DEF LASR          |                                                    |
 
-## Mods
 
-### Damage
+#### SPECIAL DEFS Explanation HEAT, COLD, ACID, ELEC, LASR
 
-#### Defensive
+Assume Damage is 100 Points.
 
-| ID    | Effect                                        |
-| ----- | --------------------------------------------- |
-| #1    | Max health +(15-25)%                          |
-| #2    | Health +(300-600)                             |
-| #3    | Fire damage protection +(20-35)%              |
-| #4    | Cold damage protection +(20-35)%              |
-| #5    | Electric damage protection +(20-35)%          |
-| #6    | Damage reflects on ennemies +(5-8)%           |
-| #7    | -(5-10)% movement +5% all damage protection   |
+```DEF < 0%``` 
+Add % to DMG
+HEAT DEF -20% means Final Heat Damage is 120 Points
+  
+  
+```DEF >= 0% && DEF <= 100%```
+Subtract % from DMG
+( HEAT DEF 20% means Final Heat Damage is 80 Points )
+  
+```DEF < 100%```
+Add % to HP
+( HEAT DEF 120% means Healed by 20 Points )
 
-#### Offensive
 
-| ID    | Effect                                        |
-| ----- | --------------------------------------------- |
-| #1    | Physical damage +(30-40)%                     |
-| #2    | Electrical damage +(30-40)%                   |
-| #3    | Cold damage +(30-40)%                         |
-| #4    | Fire damage +(30-40)%                         |
+## Status Effects
+Status Effects can be activated by Tek and use the Teks level as calculation.
 
-### Movement
+Status Effects can have Levels and its level is calculated by the LOWEST level of the 
+components that triggered it
 
-| ID    | Effect                                        |
-| ----- | --------------------------------------------- |
-| #1    | Movement speed +(15-20)%                      |
+Duration Increases with LVL
 
-### Base mods
+Example:
 
-Items have base teks, but additional teks can be installed.
+| Name              | trigger Chance   | Effect                                                                     | 
+| ----------------- | ---------------- | -------------------------------------------------------------------------- |
+| BURNING           | 10% * LVL        | init: ADD DMG HEAT = ACC * 20% * LVL; trigger: DMG HEAT = ACC * 10% * LVL  |
+| FROZEN            | 10% * LVL        | init: ADD DMG COLD = ACC * 10% * LVL; trigger: SKIPTURN                    |
+| CORROSION         | 10% * LVL        | init: ADD DMG ACID = ACC * 20% * LVL; trigger: DMG ACID = ACC * 20% * LVL  |
+| HEALING           | 10% * LVL        | init: ADD HP = ACC * 15% * LVL;                                            |
+| REGENERATING      | 10% * LVL        | init: ADD HP = ACC * 20% * LVL; trigger: DMG ACID = ACC * 10% * LVL        |
+| BROKEN            | /                | init: SUB DEF (HEAT, COLD, etc.) = ACC * 5% * LVL                          |
+| SHIELDED          | /                | init: ADD DEF (HEAT, COLD, etc.) = ACC * 5% * LVL    
 
-### Items
 
-#### Armors
-
-| Name              | Base mod 1           | Base mod 2           | HP         |
-| ----------------- | -------------------- | -------------------- | ---------- |
-| Basic             | #1                   | #6                   | 400        |
-| Basic2            | #1                   | #6                   | 650        |
-| Basic3            | #1                   | #7                   | 650        |
-| Medium            | #6                   | #7                   | 650        |
-
-#### Weapons
-
-#### Randomizers
-
-Randomizers can be activated on the workbench and apply mods on an item.
-
-1. Alien battery
-A weird energy source, adds one random mod on the item without the need for a mod slot, rerolls all mod stats. Modding is locked forever.
-
-2. Desinfector
-Removes all but base mods from the item
-
-3. Flash
-Rerolls all mods stats
-
-4. Supercharge
-Adds a random mod on the item, requires one mod slot.
-
-## Objects
+## Items
 
 Objects are either hardcoded or randomly generated.
 Wearables such as armors and weapons are craftable. 
-Weapons are made out of a base + mods. Allowing for the same weapon type to have different abilities.
+Weapons are made out of a base stats + optional tek modkits. 
+Allowing for the same weapon type to have different abilities.
+Weapons and Armor behavior can be altered using 'Tek'.
 
-### Tek / Object Augmentation - Skills / Effects
+There are 3 Base Weapon Types:
+
+- Melee Weapons (Range, Speed)
+- Ranged Weapons (Range, Speed, Caliber?)
+- Activate Tek (Computer? Gauntlet?)
+
+Armor:
+
+- Head
+- Body
+- Hands
+
+### Slots
+Slots host Tek on equipable items.
+
+Slot properties:
+ - Single: Host a Single Tek Object.
+ - Dual: Combination of two Teks. Unlocks new Effects.
+ - Offense: Enables Offensive Tek
+ - Defense: Enables defense Tek
+ - Empty: User defineable Tek
+ - Mod: Generated / Non user defined
+
+
+#### Example:
+"Rusty Sword" lvl 5
+Mod Slots: up to 3 mod slots
+Empty Slots: User Offense Tek Slots: 3 single() () ()
+
+"Rusty Sword" lvl 10
+Mod Slots: up to 5 locked mod slots offense AND defense
+Empty Slots: User Offense Tek Slots: 3 single / 1 dual : () () () ()=() 
+
+
+### Tek
 
 Objects (mostly wearables) have "slots" that can be filled by "tek objects".
 Slots can be filled by special objects that add active/passive effects, skills can be combined with other tek effects.
@@ -89,41 +114,146 @@ Example: Heal Tek increases your HP, and adds passive regenration effect to armo
 
 Tek Objects can gain XP when used and level up to create stronger combinations aswell as adding a grinding element. 
 
-#### Abilities tek
 
-**offensive**
+#### Slot Randomizers
+Triggered by drops and by crafting.
 
-| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
-| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
-| Teleport   | Teleport                                  | 10s      | 5m     | 0    | 0s       | Self   |
-| Dash       | Dash                                      | 5s       | 5m     | 0    | 1s       | Self   |
+1. Alien battery
+A weird energy source, adds one random mod on the item without the need for a mod slot, rerolls all mod stats. Modding is locked forever.
 
-**defensive**
+2. Desinfector
+Removes all open slot tek
 
-| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
-| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
-| Heal       | Instantly heal 100hp                      | 10s      | 10m    | 0    | 0s       | Single |
-| Patch      | Heal 250hp over time                      | 10s      | 10m    | 0    | 30s      | Single |
-| Fortify    | +40% to all resistances                   | 20s      | 10m    | 0    | 5s       | Single |
-| Resolute   | +40% to damage                            | 20s      | 10m    | 0    | 5s       | Single |
+3. Mod Flash
+Flashes a specific Mod with level, adds a suffix or prefix "Doctors" Gun, Sword "of Pain"
 
-#### Support tek
+4. Lucky Flash
+Flashes Random Mods and Modslots
 
-| Name              | Effect                                                 | Duration |
-| ----------------- | ------------------------------------------------------ | -------- |
-| Enlarger beam     | +50% radius to area                                    | 0s       |
-| Twister           | Turn healing to damage and the over way around         | 0s       |
-| Faster caster     | Reduce cooldown by 20%                                 | 0s       |
-| Zone              | Divide ability stats by 2 and grant area 3m            | 0s       |
-| Pacifier          | Apply slow 20% on damage                               | 0s       |
-| Burner            | Applies 50 fire tick damage                            | 5s       |
-| Freezer           | Applies 50 cold tick damage                            | 5s       |
-| Shocker           | Applies 50 electric tick damage                        | 5s       |
-| Extra battery     | +50% to tick duration                                  | 0s       |
+5. Supercharge
+Adds a random mod on the item, requires one mod slot.
+
+
+
+### Tek Scaling
+
+Most Tek has a quadratic XP curve but offers linear growth 
+from MIN to MAX value.
+
+Assume 0 to 10 Levels.
+
+COLD & OFFENSE:
+COLD DEF +8%
+COLD DEF FINAL = COLD DEF BASE * LVL
+
+COLD & DEFENSE:
+COLD DEF +8%
+COLD DEF FINAL = COLD DEF BASE * LVL
+
+
+| LVL       | XP Cost   | COLD & AMOR   |
+| --------- | --------- | ------------- |
+| 1         | 4         | COLD DEF +8%  |
+| 2         | 8         | COLD DEF +16% |
+| 3         | 16        | COLD DEF +24% |
+| ...       | ...       | ...           |
+| 10        | 2048      | COLD DEF +80% |
+
+
+### Base Tek List
+
+Example:
+Command HEAT LVL 3 
+= HEAT DAMAGE 9% * 3 + 9% chance of BURNING status
+
+| Name       | Description         | Command Effect      | Passive Effect  | Offense Slot         | Defense Slot         | 
+| ---------- | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+| HEAT       | Accelerate Particle | BURNING             | /               | +5 % DMG HEAT * LVL  | +5 % DEF HEAT * LVL  | 
+| COLD       | Decelerate Particle | FROZEN              | /               | 0                    | 1s                   | 
+| ACID       | Corrosive Fluid     | CORROSION           | /               | 0                    | 1s                   | 
+| SPARK      | Electricity         | ELECTORCUTE         | /               | 0                    | 1s                   | 
+| SHIELD     | Physical Shield     | Protect Damage      | /               | 0                    | 1s                   | 
+| REVENGE    | Retaliate           |                     | /               | Attack on taking DMG | 1s                   | 
+| EXOSKEL    | Increase Melee DMG  | /                   | /               | 0                    | 1s                   | 
+| HP         | Increase HP         |                     | /               | 0                    | 1s                   | 
+| NANOBOTS   | Add Range to status tek |                 | /               | 0                    | 1s                   | 
+| REFLECTOR  | Add Range to status tek |                 | /               | 0                    | 1s                   | 
+| DEFLECTOR  | Add Range to status tek |                 | /               | 0                    | 1s                   | 
+
+
+
+### Dual Slot Tek
+
+| Name       | Description         | Command Effect      | Passive Effect  | Offense Slot         | Defense Slot         | 
+| ---------- | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+| All        | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+| Infuse     | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+
+
+### Dual Slot Combination Matrix
+
+|            | Heat | Cold | Radius | Area | Duration | Target |
+| ---------- | ---- | ---- | ------ | ---- | -------- | ------ |
+| Heat       | /    | /    | Radius | Area | Duration | Target |
+| Cold       | /    | /    | Radius | Area | Duration | Target |
+|            | Heat | Cold | Radius | Area | Duration | Target |
+|            | Heat | Cold | Radius | Area | Duration | Target |
+
+### Tek Modkit
+Mods are generated / predefined sets of Tek added to weapons and armor.
+that define the base properties of a weapon,
+they cant be altered by the user
+
+Example Generation:
+
+Flash:
+Craft the same weapon but add a Specific Tek Mod Prefab
+
+Lucky Flash:
+
+Roll: # of Slot (1-4)
+Roll: Mod 1 Content, Mod 1 Level
+Roll: Mod 2 Content, Mod 2 Level
+etc.
+
+
+### Tek Modkit List
+
+| Name              | Effect                                                 | Suffix/Prefix |
+| ----------------- | ------------------------------------------------------ | ------------- |
+| Enlarger beam     | +50% radius to area                                    | 0s            |
+| Twister           | Turn healing to damage and the over way around         | 0s            |
+| Faster caster     | Reduce cooldown by 20%                                 | 0s            |
+| Zone              | Divide ability stats by 2 and grant area 3m            | 0s            |
+| Pacifier          | Apply slow 20% on damage                               | 0s            |
+| Burner            | APPLY BURNING LVL 5                                    |               |
+| Extra battery     | +50% to tick duration                                  | Energized...  |
+| Alien battery     | +80% to tick duration, random effect                   | Alien...      |
+| Doctors           | HP TEK LVL 5 && APPLY REGENERATING LVL 5               | Doctors...    |
+| Fire Shield       | Fire damage protection +(20-35)%                       | ...of Fire    |
+| Deflector Matrix  | REFLECT LVL 5                                          | ...of Fire    |
+ 
+
+
+#### Weapons
+
+Weapon Properties
+| Name              | Description       |
+| ----------------- | ----------------- |
+| HP                | Life Points       |
+
+#### Armors
+
+| Name              | Base mod 1           | Base mod 2           | HP         |
+| ----------------- | -------------------- | -------------------- | ---------- |
+| Basic             | #1                   | #6                   | 400        |
+| Basic2            | #1                   | #6                   | 650        |
+| Basic3            | #1                   | #7                   | 650        |
+| Medium            | #6                   | #7                   | 650        |
 
 ## Actions
 
-Abilities are activated using keyboard keys + clicking.
+Use Range / Melee or Tek Command Executer.
 
 ## Crafting
 
