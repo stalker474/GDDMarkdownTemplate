@@ -5,16 +5,34 @@
 Movement is point and click style.
 Abilities can include teleporting.
 
-## Mods
+## Objects
 
+Objects are either hardcoded or randomly generated.
+Wearables such as armors and weapons are craftable. 
+Weapons are made out of a base stats + mods. 
+Allowing for the same weapon type to have different abilities.
+Weapons and Armor behavior can be altered using 'Tek'.
+
+There are 3 Base Weapon Types:
+
+- Melee Weapons (Range, Speed)
+- Ranged Weapons (Range, Speed, Caliber?)
+- Activate Tek (Computer? Gauntlet?)
+
+Armor:
+
+- Head
+- Body
+- Hands
+
+### Mods
 ### Damage
-
 #### Defensive
 
-| ID    | Effect                                        |
-| ----- | --------------------------------------------- |
-| #1    | Max health +(15-25)%                          |
-| #2    | Health +(300-600)                             |
+| ID    | Effect                                        | Name       |
+| ----- | --------------------------------------------- | ---------- |
+| #1    | Max health +(15-25)%                          | Strong     |
+| #2    | Health +(300-600)                             | 
 | #3    | Fire damage protection +(20-35)%              |
 | #4    | Cold damage protection +(20-35)%              |
 | #5    | Electric damage protection +(20-35)%          |
@@ -69,11 +87,6 @@ Rerolls all mods stats
 4. Supercharge
 Adds a random mod on the item, requires one mod slot.
 
-## Objects
-
-Objects are either hardcoded or randomly generated.
-Wearables such as armors and weapons are craftable. 
-Weapons are made out of a base + mods. Allowing for the same weapon type to have different abilities.
 
 ### Tek / Object Augmentation - Skills / Effects
 
@@ -88,6 +101,36 @@ Tek can add boni aswell as mali.
 Example: Heal Tek increases your HP, and adds passive regenration effect to armor. But lowers your attack dmg.
 
 Tek Objects can gain XP when used and level up to create stronger combinations aswell as adding a grinding element. 
+
+### Tek
+Command or Passive
+
+Name: Heat
+Description: Accelerate Particle Movement
+
+
+| Name       | Description         | Command Effect   | Passive Effect | Base | XP Curve | Stat Curve | Duration | 
+| ---------- | ------------------- | ---------------- | -------------- | ---- | ------ |----- | -------- | 
+| Heat       | Accelerate Particle | Burn Target      | Heat Absorb    | 0    | 0s       | 
+| Cold       | Decelerate Particle | Freeze Target    | Cold Absorb    | 0    | 1s       | 
+| Acid       | Corrosive Fluid     | Damage Over Time |         | 5m     | 0    | 1s       | 
+| Spark      | Electricity         | 
+| Shield     | Physical Shield     | Protect Damage   |
+
+
+### Tek Combination Effects
+
+| Name       | Effect   | Lvl 0    | Radius | Area | Duration | Target |
+| ---------- | --------------|--------------|----------- | -------- | ----- |
+| All        | Connected Command Tek can Targets All Enemmies            | Self   |
+| Infuse     | On Weapon: Add Effect to Normal Attack Armor: add effect to protection   | Self   |
+|            | Weapon: Damage Over Time                    | Self   |
+| 
+
+### Special Tek (Two effects in one, has a name)
+
+
+
 
 #### Abilities tek
 
