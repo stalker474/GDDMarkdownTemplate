@@ -1,26 +1,60 @@
 # Mechanics
+## Character
 
-## Character Attributes
-
+Properties:
 
 | Name              | Description       |
 | ----------------- | ----------------- |
-| Health            | Life Points       |
-| Damage            |                   |
-| Speed             |                   |
-| Initiative        |                   |
+| HP                | Life Points       |
+| DMG               | Melee Damage      |
+| ACC               | Ranged Damage     |
+| SPD               | Movement & Attack |
+| INI               | Queue Position (async)                  |
+| DEF               | Physical Defense (Ballistic & Melee                  |
+| DEF HEAT          | Heat Defense                    |
+| DEF COLD          | Cold Defense                  |
+| DEF ACID          |                   |
+| DEF ELEC          |                   | 
+| DEF LASR          |                   |
 
 
-## Movement
+#### SPECIAL DEFS Explanation HEAT, COLD, ACID, ELEC, LASR
 
-Movement is point and click style.
-Abilities can include teleporting.
+Assume Damage is 100 Points.
 
-## Objects
+DEF < 0% 
+  Add % Amount to DMG
+  ( HEAT DEF -20% means Final Heat Damage is 120 Points )
+  
+DEF >= 0% && DEF <= 100%
+  Subt % Amount from DMG
+  ( HEAT DEF 20% means Final Heat Damage is 80 Points )
+  
+DEF < 100%
+  Subt % Amount from DMG
+  ( HEAT DEF 120% means Healed by 20 Points )
+  
+
+
+## Status Effects
+Status Effects can be activated by Tek and use the Teks level as calculation
+
+| Name              | Duration | Effects Calc      |
+| ----------------- | -------- | ----------------------- | -------- |
+| BURNING           | DOT + HEAT DMG - self DEF HEAT |          |
+| FROZEN            | DOT + COLD        |          |
+| ACIDIC            | DOT + ACID                  |
+| HEALING           | DOT + MEDIC NANOBOTS        |
+| REGENERATING|                   |
+| BROKEN (heat,cold,acid,elec,lasr) | |
+| SHIELDED (heat, cold, acid, elec, lasr) |  |
+
+
+## Items
 
 Objects are either hardcoded or randomly generated.
 Wearables such as armors and weapons are craftable. 
-Weapons are made out of a base stats + mods. 
+Weapons are made out of a base stats + optional tek modkits. 
 Allowing for the same weapon type to have different abilities.
 Weapons and Armor behavior can be altered using 'Tek'.
 
@@ -36,40 +70,12 @@ Armor:
 - Body
 - Hands
 
-### Mods
-### Damage
-#### Defensive
+#### Weapons
 
-| ID    | Effect                                        | Name       |
-| ----- | --------------------------------------------- | ---------- |
-| #1    | Max health +(15-25)%                          | Strong     |
-| #2    | Health +(300-600)                             | 
-| #3    | Fire damage protection +(20-35)%              |
-| #4    | Cold damage protection +(20-35)%              |
-| #5    | Electric damage protection +(20-35)%          |
-| #6    | Damage reflects on ennemies +(5-8)%           |
-| #7    | -(5-10)% movement +5% all damage protection   |
-
-#### Offensive
-
-| ID    | Effect                                        |
-| ----- | --------------------------------------------- |
-| #1    | Physical damage +(30-40)%                     |
-| #2    | Electrical damage +(30-40)%                   |
-| #3    | Cold damage +(30-40)%                         |
-| #4    | Fire damage +(30-40)%                         |
-
-### Movement
-
-| ID    | Effect                                        |
-| ----- | --------------------------------------------- |
-| #1    | Movement speed +(15-20)%                      |
-
-### Base mods
-
-Items have base teks, but additional teks can be installed.
-
-### Items
+Weapon Properties
+| Name              | Description       |
+| ----------------- | ----------------- |
+| HP                | Life Points       |
 
 #### Armors
 
@@ -80,9 +86,9 @@ Items have base teks, but additional teks can be installed.
 | Basic3            | #1                   | #7                   | 650        |
 | Medium            | #6                   | #7                   | 650        |
 
-#### Weapons
 
-#### Randomizers
+
+#### Drop / Craft Randomizers
 
 Randomizers can be activated on the workbench and apply mods on an item.
 
@@ -113,53 +119,42 @@ Example: Heal Tek increases your HP, and adds passive regenration effect to armo
 
 Tek Objects can gain XP when used and level up to create stronger combinations aswell as adding a grinding element. 
 
-### Tek
-Command or Passive
 
-Name: Heat
-Description: Accelerate Particle Movement
+### Tek Scaling
+
+Most Tek has a quadratic XP curve but offers linear growth 
+from MIN to MAX value.
+
+Assume 0 to 10 Levels.
+
+COLD & ARMOR:
+COLD DEF +8%
+COLD DEF FINAL = COLD DEF BASE * LVL
 
 
-| Name       | Description         | Command Effect   | Passive Effect | Base | XP Curve | Stat Curve | Duration | 
-| ---------- | ------------------- | ---------------- | -------------- | ---- | ------ |----- | -------- | 
-| Heat       | Accelerate Particle | Burn Target      | Heat Absorb    | 0    | 0s       | 
-| Cold       | Decelerate Particle | Freeze Target    | Cold Absorb    | 0    | 1s       | 
-| Acid       | Corrosive Fluid     | Damage Over Time |         | 5m     | 0    | 1s       | 
+| LVL       | XP Cost   | COLD & AMOR   |
+| --------- | --------- | ------------- |
+| 1         | 4         | COLD DEF +8%  |
+| 2         | 8         | COLD DEF +16% |
+| 3         | 16        | COLD DEF +24% |
+| ...       | ...       | ...           |
+| 10        | 2048      | COLD DEF +80% |
+
+
+
+### Command Tek
+
+| Name       | Description         | Command Effect      | Passive Effect  | Weapon | Armor | 
+| ---------- | ------------------- | ------------------- | --------------  |  | -------- | 
+| ExoScel    | Increase Melee DMG  | / | 15-45% Heat Def     | 0s       | 
+| Heat       | Accelerate Particle | Burn Target 90% Dmg | 15-45% Heat Def     | 0s       | 
+| Cold       | Decelerate Particle | Freeze Target       | Cold Absorb     | 0    | 1s       | 
+| Acid       | Corrosive Fluid     | Ignore Armor    |                 | 0    | 1s       | 
 | Spark      | Electricity         | 
 | Shield     | Physical Shield     | Protect Damage   |
+| Revenge | | |
+|
 
-
-### Tek Combination Effects
-
-| Name       | Effect   | Lvl 0    | Radius | Area | Duration | Target |
-| ---------- | --------------|--------------|----------- | -------- | ----- |
-| All        | Connected Command Tek can Targets All Enemmies            | Self   |
-| Infuse     | On Weapon: Add Effect to Normal Attack Armor: add effect to protection   | Self   |
-|            | Weapon: Damage Over Time                    | Self   |
-| 
-
-### Special Tek (Two effects in one, has a name)
-
-
-
-
-#### Abilities tek
-
-**offensive**
-
-| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
-| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
-| Teleport   | Teleport                                  | 10s      | 5m     | 0    | 0s       | Self   |
-| Dash       | Dash                                      | 5s       | 5m     | 0    | 1s       | Self   |
-
-**defensive**
-
-| Name       | Effect                                    | Cooldown | Radius | Area | Duration | Target |
-| ---------- | ----------------------------------------- | -------- | ------ |----- | -------- | ------ |
-| Heal       | Instantly heal 100hp                      | 10s      | 10m    | 0    | 0s       | Single |
-| Patch      | Heal 250hp over time                      | 10s      | 10m    | 0    | 30s      | Single |
-| Fortify    | +40% to all resistances                   | 20s      | 10m    | 0    | 5s       | Single |
-| Resolute   | +40% to damage                            | 20s      | 10m    | 0    | 5s       | Single |
 
 #### Support tek
 
@@ -174,10 +169,54 @@ Description: Accelerate Particle Movement
 | Freezer           | Applies 50 cold tick damage                            | 5s       |
 | Shocker           | Applies 50 electric tick damage                        | 5s       |
 | Extra battery     | +50% to tick duration                                  | 0s       |
+| Alien battery     | +80% to tick duration, random effect                   | 0s       |
+| Trigger    | ... over time       | /
+
+
+
+### Dual Slot Tek
+
+| Name       | Effect   | Lvl 0    | Radius | Area | Duration | Target |
+| ---------- | --------------|--------------|----------- | -------- | ----- |
+| All        | Connected Command Tek can Targets All Enemmies            | Self   |
+| Infuse     | On Weapon: Add Effect to Normal Attack Armor: add effect to protection   | Self   |
+|            | Weapon: Damage Over Time                    | Self   |
+| 
+
+
+### Dual Slot Combination Matrix
+
+|            | Heat | Cold | Radius | Area | Duration | Target |
+| ---------- | --------------|--------------|----------- | -------- | ----- |
+| Heat       | Connected Command Tek can Targets All Enemmies            | Self   |
+| Infuse     | On Weapon: Add Effect to Normal Attack Armor: add effect to protection   | Self   |
+|            | Weapon: Damage Over Time                    | Self   |
+| 
+
+### Tek Modkit
+Tek Mods are generated / predefined sets of effects added to weapons and armor
+that define the base properties of a weapon,
+they cant be altered by the user
+
+| ID    |  Prefix  | Suffix | Effect         |
+| ----- | -------- | ------ | -------------- | --------------------------------------------- |
+| #1    | Doctors  | /        | Max health +(15-25)%                          |
+| #2    |  /       |  of Life | Health +(300-600)                             | 
+| #3    |  Name    |  | Fire damage protection +(20-35)%              |
+| #4    |  Name    -----   |   | Cold damage protection +(20-35)%              |
+| #5    |  Name    -----   |   | Electric damage protection +(20-35)%          |
+| #6    |  Name     -----   |  | Damage reflects on ennemies +(5-8)%           |
+| #7    |  Name    -----   |   | -(5-10)% movement +5% all damage protection   |
+| #8    | Physical damage +(30-40)%                     |
+| #9    | Electrical damage +(30-40)%                   |
+| #10   | Cold damage +(30-40)%                         |
+| #11   | Fire damage +(30-40)%                         |
+| #12   | Movement speed +(15-20)%                      |
+
 
 ## Actions
 
-Abilities are activated using keyboard keys + clicking.
+Use Range / Melee or Tek Command Executer.
 
 ## Crafting
 
