@@ -3,19 +3,20 @@
 
 Properties:
 
-| Name              | Description       |
-| ----------------- | ----------------- |
-| HP                | Life Points       |
-| DMG               | Melee Damage      |
-| ACC               | Ranged Damage     |
-| SPD               | Movement & Attack |
-| INI               | Queue Position (async)                  |
-| DEF               | Physical Defense (Ballistic & Melee                  |
-| DEF HEAT          | Heat Defense                    |
-| DEF COLD          | Cold Defense                  |
-| DEF ACID          |                   |
-| DEF ELEC          |                   | 
-| DEF LASR          |                   |
+| Name              | Description                                        |
+| ----------------- | -------------------------------------------------- |
+| HP                | Life Points                                        |
+| DMG               | Melee Damage                                       |
+| ACC               | Ranged Damage                                      |
+| SPD               | Movement & Attack                                  |
+| INI               | Queue Position (async)                             |
+| DEF               | Physical Defense (Ballistic & Melee                |
+| LUCK              |                                                    |
+| DEF HEAT          | Heat Defense                                       |
+| DEF COLD          | Cold Defense                                       |
+| DEF ACID          |                                                    |
+| DEF ELEC          |                                                    | 
+| DEF LASR          |                                                    |
 
 
 #### SPECIAL DEFS Explanation HEAT, COLD, ACID, ELEC, LASR
@@ -34,7 +35,6 @@ Subtract % from DMG
 ```DEF < 100%```
 Add % to HP
 ( HEAT DEF 120% means Healed by 20 Points )
-  
 
 
 ## Status Effects
@@ -47,18 +47,15 @@ Duration Increases with LVL
 
 Example:
 
-
-| Name              | trigger Chance | Effect                                                                    | 
-| ----------------- | ---------------- | ----------------------------------------------------------------------- |
-| BURNING           | 10% * LVL        | init: DMG HEAT = ACC*20%*LVL; trigger: DMG HEAT = ACC*10%*LVL           |
-| FROZEN            | 10% * LVL        | init: DMG COLD = ACC * 10% * LVL; trigger: "SKIPTURN"                   |
-| ACIDIC            | DOT + ACID                  |
-| HEALING           | DOT + MEDIC NANOBOTS        |
-| REGENERATING|                   |
-| BROKEN (heat,cold,acid,elec,lasr) | |
-| SHIELDED (heat, cold, acid, elec, lasr) |  |
-
-Example: BURNING lvl
+| Name              | trigger Chance   | Effect                                                                     | 
+| ----------------- | ---------------- | -------------------------------------------------------------------------- |
+| BURNING           | 10% * LVL        | init: ADD DMG HEAT = ACC * 20% * LVL; trigger: DMG HEAT = ACC * 10% * LVL  |
+| FROZEN            | 10% * LVL        | init: ADD DMG COLD = ACC * 10% * LVL; trigger: SKIPTURN                    |
+| CORROSION         | 10% * LVL        | init: ADD DMG ACID = ACC * 20% * LVL; trigger: DMG ACID = ACC * 20% * LVL  |
+| HEALING           | 10% * LVL        | init: ADD HP = ACC * 15% * LVL;                                            |
+| REGENERATING      | 10% * LVL        | init: ADD HP = ACC * 20% * LVL; trigger: DMG ACID = ACC * 10% * LVL        |
+| BROKEN            | /                | init: SUB DEF (HEAT, COLD, etc.) = ACC * 5% * LVL                          |
+| SHIELDED          | /                | init: ADD DEF (HEAT, COLD, etc.) = ACC * 5% * LVL    
 
 
 ## Items
@@ -89,18 +86,18 @@ Slot properties:
  - Dual: Combination of two Teks. Unlocks new Effects.
  - Offense: Enables Offensive Tek
  - Defense: Enables defense Tek
- - Open: User defineable Tek
- - Locked: Generated / Non user defined (Mods, Base Stats)
+ - Empty: User defineable Tek
+ - Mod: Generated / Non user defined
 
 
 #### Example:
 "Rusty Sword" lvl 5
-Locked Slots: up to 3 mod slots
-Open Slots: User Offense Tek Slots: 3 single() () ()
+Mod Slots: up to 3 mod slots
+Empty Slots: User Offense Tek Slots: 3 single() () ()
 
 "Rusty Sword" lvl 10
-Locked Slots: up to 5 locked mod slots offense AND defense
-Open Slots: User Offense Tek Slots: 3 single / 1 dual : () () () ()=() 
+Mod Slots: up to 5 locked mod slots offense AND defense
+Empty Slots: User Offense Tek Slots: 3 single / 1 dual : () () () ()=() 
 
 
 ### Tek
@@ -169,37 +166,38 @@ Example:
 Command HEAT LVL 3 
 = HEAT DAMAGE 9% * 3 + 9% chance of BURNING status
 
-| Name       | Description         | Command Effect      | Passive Effect  | Offense | Defense | 
-| ---------- | ------------------- | ------------------- | --------------  | -----  | -------- | 
-| Heat       | Accelerate Particle | Trigger BURNING     |       | 15-45% Heat Def     | 0s       | 
-| Cold       | Decelerate Particle | Freeze Target       | Cold Absorb     | 0    | 1s       | 
-| Acid       | Corrosive Fluid     | Ignore Armor    |                 | 0    | 1s       | 
-| Spark      | Electricity         | 
-| Shield     | Physical Shield     | Protect Damage   |
-| Revenge    | | |
-| ExoScel    | Increase Melee DMG  | / | 15-45% Heat Def     | 0s       | 
-|
+| Name       | Description         | Command Effect      | Passive Effect  | Offense Slot         | Defense Slot         | 
+| ---------- | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+| HEAT       | Accelerate Particle | BURNING             | /               | +5 % DMG HEAT * LVL  | +5 % DEF HEAT * LVL  | 
+| COLD       | Decelerate Particle | FROZEN              | /               | 0                    | 1s                   | 
+| ACID       | Corrosive Fluid     | CORROSION           | /               | 0                    | 1s                   | 
+| SPARK      | Electricity         | ELECTORCUTE         | /               | 0                    | 1s                   | 
+| SHIELD     | Physical Shield     | Protect Damage      | /               | 0                    | 1s                   | 
+| REVENGE    | Retaliate           |                     | /               | Attack on taking DMG | 1s                   | 
+| EXOSKEL    | Increase Melee DMG  | /                   | /               | 0                    | 1s                   | 
+| HP         | Increase HP         |                     | /               | 0                    | 1s                   | 
+| NANOBOTS   | Add Range to status tek |                 | /               | 0                    | 1s                   | 
+| REFLECTOR  | Add Range to status tek |                 | /               | 0                    | 1s                   | 
+| DEFLECTOR  | Add Range to status tek |                 | /               | 0                    | 1s                   | 
 
 
 
 ### Dual Slot Tek
 
-| Name       | Effect   | Radius | Area | Duration | Target |
-| ---------- | ---------|--------------|----------- | -------- | ----- |
-| All        | Connected Command Tek can Targets All Enemmies            | Self   |
-| Infuse     | On Weapon: Add Effect to Normal Attack Armor: add effect to protection   | Self   |
-|            | Weapon: Damage Over Time                    | Self   |
-| 
+| Name       | Description         | Command Effect      | Passive Effect  | Offense Slot         | Defense Slot         | 
+| ---------- | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+| All        | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
+| Infuse     | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
 
 
 ### Dual Slot Combination Matrix
 
 |            | Heat | Cold | Radius | Area | Duration | Target |
-| ---------- | --------------|--------------|----------- | -------- | ----- |
-| Heat       | Connected Command Tek can Targets All Enemmies            | Self   |
-| Infuse     | On Weapon: Add Effect to Normal Attack Armor: add effect to protection   | Self   |
-|            | Weapon: Damage Over Time                    | Self   |
-| 
+| ---------- | ---- | ---- | ------ | ---- | -------- | ------ |
+| Heat       | /    | /    | Radius | Area | Duration | Target |
+| Cold       | /    | /    | Radius | Area | Duration | Target |
+|            | Heat | Cold | Radius | Area | Duration | Target |
+|            | Heat | Cold | Radius | Area | Duration | Target |
 
 ### Tek Modkit
 Mods are generated / predefined sets of Tek added to weapons and armor.
@@ -221,37 +219,20 @@ etc.
 
 ### Tek Modkit List
 
-| Name    |  | Effect         |
-| ----- | -------- | ------ | -------------- | --------------------------------------------- |
-| Doctors    | Doctors  | /        | Max health +(15-25)%                          |
-| #2    |  /       |  of Life | Health +(300-600)                             | 
-| #3    |  Name    |  | Fire damage protection +(20-35)%              |
-| #4    |  Name    -----   |   | Cold damage protection +(20-35)%              |
-| #5    |  Name    -----   |   | Electric damage protection +(20-35)%          |
-| #6    |  Name     -----   |  | Damage reflects on ennemies +(5-8)%           |
-| #7    |  -(5-10)% movement +5% all damage protection   |
-| #8    | Physical damage +(30-40)%                     |
-| #9    | Electrical damage +(30-40)%                   |
-| #10   | Cold damage +(30-40)%                         |
-| #11   | Fire damage +(30-40)%                         |
-| #12   | Movement speed +(15-20)%                      |
-
-
-#### Special Tek List
-
 | Name              | Effect                                                 | Suffix/Prefix |
-| ----------------- | ------------------------------------------------------ | -------- |
-| Enlarger beam     | +50% radius to area                                    | 0s       |
-| Twister           | Turn healing to damage and the over way around         | 0s       |
-| Faster caster     | Reduce cooldown by 20%                                 | 0s       |
-| Zone              | Divide ability stats by 2 and grant area 3m            | 0s       |
-| Pacifier          | Apply slow 20% on damage                               | 0s       |
-| Burner            | Applies 50 fire tick damage                            | 5s       |
-| Freezer           | Applies 50 cold tick damage                            | 5s       |
-| Shocker           | Applies 50 electric tick damage                        | 5s       |
-| Extra battery     | +50% to tick duration                                  | 0s       |
-| Alien battery     | +80% to tick duration, random effect                   | 0s       |
-| Trigger    | ... over time       | /
+| ----------------- | ------------------------------------------------------ | ------------- |
+| Enlarger beam     | +50% radius to area                                    | 0s            |
+| Twister           | Turn healing to damage and the over way around         | 0s            |
+| Faster caster     | Reduce cooldown by 20%                                 | 0s            |
+| Zone              | Divide ability stats by 2 and grant area 3m            | 0s            |
+| Pacifier          | Apply slow 20% on damage                               | 0s            |
+| Burner            | APPLY BURNING LVL 5                                    |               |
+| Extra battery     | +50% to tick duration                                  | Energized...  |
+| Alien battery     | +80% to tick duration, random effect                   | Alien...      |
+| Doctors           | HP TEK LVL 5 && APPLY REGENERATING LVL 5               | Doctors...    |
+| Fire Shield       | Fire damage protection +(20-35)%                       | ...of Fire    |
+| Deflector Matrix  | REFLECT LVL 5                                          | ...of Fire    |
+ 
 
 
 #### Weapons
