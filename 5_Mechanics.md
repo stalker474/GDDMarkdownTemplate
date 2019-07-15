@@ -25,16 +25,18 @@ Assume Damage is 100 Points.
 
 ```DEF < 0%``` 
 Add % to DMG
-HEAT DEF -20% means Final Heat Damage is 120 Points
-  
+
+ - HEAT DEF -20% means Final Heat Damage is 120 Points
   
 ```DEF >= 0% && DEF <= 100%```
 Subtract % from DMG
-( HEAT DEF 20% means Final Heat Damage is 80 Points )
+
+ - HEAT DEF 20% means Final Heat Damage is 80 Points )
   
 ```DEF < 100%```
 Add % to HP
-( HEAT DEF 120% means Healed by 20 Points )
+
+ - HEAT DEF 120% means Healed by 20 Points )
 
 
 ## Status Effects
