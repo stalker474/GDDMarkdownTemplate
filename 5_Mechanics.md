@@ -14,9 +14,9 @@ Properties:
 | LUCK              |                                                    |
 | DEF HEAT          | Heat Defense                                       |
 | DEF COLD          | Cold Defense                                       |
-| DEF ACID          |                                                    |
-| DEF ELEC          |                                                    | 
-| DEF LASR          |                                                    |
+| DEF ACID          | Acid Defense                                       |
+| DEF ELEC          | Electricity Defense                                | 
+| DEF LASR          | Laser Defense                                      |
 
 
 #### SPECIAL DEFS Explanation HEAT, COLD, ACID, ELEC, LASR
@@ -55,7 +55,9 @@ Example:
 | HEALING           | 10% * LVL        | init: ADD HP = ACC * 15% * LVL;                                            |
 | REGENERATING      | 10% * LVL        | init: ADD HP = ACC * 20% * LVL; trigger: DMG ACID = ACC * 10% * LVL        |
 | BROKEN            | /                | init: SUB DEF (HEAT, COLD, etc.) = ACC * 5% * LVL                          |
-| SHIELDED          | /                | init: ADD DEF (HEAT, COLD, etc.) = ACC * 5% * LVL    
+| SHIELDED          | /                | init: ADD DEF (HEAT, COLD, etc.) = ACC * 5% * LVL                          |
+| VENGEFUL          | /                | special: attack/command with 90% damage on taking damage                   |
+| SACRIFICE         | /                | special: take damage for other players 50% chance + luck                   |
 
 
 ## Items
@@ -169,11 +171,11 @@ Command HEAT LVL 3
 | Name       | Description         | Command Effect      | Passive Effect  | Offense Slot         | Defense Slot         | 
 | ---------- | ------------------- | ------------------- | --------------  | -------------------- | -------------------- | 
 | HEAT       | Accelerate Particle | BURNING             | /               | +5 % DMG HEAT * LVL  | +5 % DEF HEAT * LVL  | 
-| COLD       | Decelerate Particle | FROZEN              | /               | 0                    | 1s                   | 
-| ACID       | Corrosive Fluid     | CORROSION           | /               | 0                    | 1s                   | 
-| SPARK      | Electricity         | ELECTORCUTE         | /               | 0                    | 1s                   | 
-| SHIELD     | Physical Shield     | Protect Damage      | /               | 0                    | 1s                   | 
-| REVENGE    | Retaliate           |                     | /               | Attack on taking DMG | 1s                   | 
+| COLD       | Decelerate Particle | FROZEN              | /               | +5 % DMG COLD * LVL  | +5 % DEF COLD * LVL  | 
+| ACID       | Corrosive Fluid     | CORROSION           | /               | +5 % DMG ACID * LVL  | +5 % DEF ACID * LVL  | 
+| SPARK      | Electricity         | ELECTORCUTE         | /               | +5 % DMG ELEC * LVL  | +5 % DEF ELEC * LVL  | 
+| SHIELD     | Physical Shield     | Status: SHIEDED     | /               | /                    | +5 % DEF DMG * LVL   | 
+| REVENGE    | Retaliate           | Status: VENGEFUL    | /               | /                    | /                    | 
 | EXOSKEL    | Increase Melee DMG  | /                   | /               | 0                    | 1s                   | 
 | HP         | Increase HP         |                     | /               | 0                    | 1s                   | 
 | NANOBOTS   | Add Range to status tek |                 | /               | 0                    | 1s                   | 
